@@ -38,13 +38,13 @@ function getStart() {
 		}else  if (/kaishijingsai.html/.test(window.location.href)) { //正式答题
 			
 			//非模拟答题的情况 baseURI
-			console.log(targetLi);
-			console.log(firstLi[0]);
+			//console.log(targetLi);
+			//console.log(firstLi[0]);
 			var question = $(firstLi[0]).find('h1 span.W_ml10').eq(0).text();		
-			console.log(question);
+			//console.log(question);
 			
 			//测试
-			answerStrs = searchAnswer(question, firstLi[0]);
+			answerStrs = searchNewAnswer(question, firstLi[0]);
 			
 		}else {
 			return;
@@ -117,8 +117,11 @@ function searchNewAnswer(question,selections){
 		return new Array();
 	}
 
+
 	var answerString=current_question.replace(question_split[0],'');
-	answers=answerString.replace(question_split[1],'');
+	answerString=answerString.replace(question_split[1],'');
+
+	console.log('答案：'+answerString)
 
 	var selectionDivs = $(selections).find('div.W_ml45');
 	var answerLetter=new Array();
